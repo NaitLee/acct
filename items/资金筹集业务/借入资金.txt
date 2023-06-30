@@ -3,7 +3,7 @@
 向银行借款 %sum 元备用，在%period后还款。
 向银行申请了为期%period的 %sum 元短期借款。
 
-固定资产
+银行存款
 长期借款;
 向银行借款 %sum 元备用，并计划在%period后还款。
 向银行申请了为期%period的 %sum 元长期借款%longterm。
