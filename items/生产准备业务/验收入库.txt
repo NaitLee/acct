@@ -1,0 +1,4 @@
+原材料——
+在途物资——;
+%date，%self计算并结转本月已验收入库材料的实际采购成本。其中，%code1总计 %split1 元，%code2总计 %split2 元。%split;
+material

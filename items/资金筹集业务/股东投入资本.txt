@@ -1,0 +1,15 @@
+银行存款
+实收资本——;
+%self在%date接受%code作为资本投入的资金 %sum 元。
+%self于%date收到%code投资 %sum 元。;
+company
+
+固定资产
+实收资本;
+%self在%date收到%code投入一批制造设备，价值 %sum 元。
+%self于%date收到%code作为资本投入的房屋一栋和设备一台，确认的价值共计 %sum 元。
+
+无形资产
+实收资本;
+%self在%date收到%code作为资本投入的一项专利权，确认的价值为 %sum 元。
+%self于%date收到%code作为资本投入的一项商标权，确认的价值为 %sum 元。

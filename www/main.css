@@ -1,0 +1,152 @@
+
+:root {
+    --fore: #1f2129;
+    --back: #f8fdfd;
+    --theme: #3377ff;
+    --descent: #b4dcff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Noto Sans CJK SC', 'Microsoft YaHei UI', 'Noto Sans', sans-serif;
+    font-size: large;
+    color: var(--fore);
+    background-color: var(--back);
+    text-align: justify;
+}
+
+section, main, header, footer {
+    margin: 1em auto;
+    width: 40em;
+    max-width: 100%;
+    padding: 0 8pt;
+}
+footer {
+    font-size: small;
+    opacity: 0.8;
+    margin: 8em auto;
+    text-align: center;
+}
+
+.center {
+    text-align: center;
+}
+
+h1 {
+    font-size: 1.8em;
+}
+h1:before {
+    content: '《 '
+}
+h1:after {
+    content: ' 》'
+}
+h2 {
+    font-size: 1.6em;
+}
+h2:before {
+    content: '〈 '
+}
+h2:after {
+    content: ' 〉'
+}
+h3 {
+    font-size: 1.4em;
+}
+h1, h2, h3 {
+    text-align: center;
+}
+
+main.frontpage {
+    text-align: center;
+}
+main.frontpage > p {
+    font-size: larger;
+}
+
+a.button {
+    display: inline-block;
+    background-color: var(--back);
+    text-decoration: none;
+    padding: 4pt 8pt;
+    margin: 4pt 8pt;
+    min-width: 6em;
+    border: 2pt solid var(--theme);
+    border-radius: 2em;
+    font-weight: bold;
+    transition: all 0.3s ease-out;
+}
+a.button:any-link {
+    color: var(--theme);
+    border: 2pt solid var(--theme);
+}
+a.button:hover {
+    color: var(--back);
+    background-color: var(--theme);
+}
+
+main.frontpage > p > a {
+    padding: 1em 2em;
+    margin: 1em;
+    min-width: 8em;
+    border-radius: 2em;
+    transition: all 0.3s ease-out;
+}
+
+a:any-link {
+    color: #3333ff;
+    transition: color 0.3s ease;
+}
+a:hover {
+    color: #3380ff;
+}
+
+table {
+    width: 100%;
+    white-space: nowrap;
+    margin-bottom: 16pt;
+}
+.to-be-filled, table td:nth-child(1) > abbr {
+    /* background-color: #f0f0f0;
+    color: #f0f0f0; */
+    color: var(--back);
+    transition: all 0.2s ease;
+    display: inline-block;
+    padding: 0 0.5em;
+    /* padding: 0; */
+    min-width: 4em;
+    cursor: help;
+    text-decoration: none;
+    border-bottom: 1pt solid var(--fore);
+}
+.to-be-filled:hover,
+.to-be-filled.shown,
+table td:nth-child(1) > abbr:hover {
+    color: var(--fore);
+}
+table td:nth-child(2),
+table td:nth-child(3) {
+    width: 4em;
+    text-align: right;
+    text-align: end;
+}
+p {
+    margin: 8pt 0;
+}
+
+hr {
+    border: none;
+    border-top: 1pt var(--fore) dashed;
+    height: 0;
+    margin: 8pt 0;
+}
+
+@media print {
+    footer, .print-hide {
+        display: none;
+    }
+}

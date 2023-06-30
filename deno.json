@@ -1,0 +1,7 @@
+{
+    "tasks": {
+        "mkitems": "deno run --allow-read --allow-write mkitems.js",
+        "start-static": "cd www; python -m http.server; cd ..",
+        "start": "deno run --allow-read --allow-net main.ts"
+    }
+}

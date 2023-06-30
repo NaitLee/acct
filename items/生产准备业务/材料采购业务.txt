@@ -1,0 +1,16 @@
+在途物资%sum——,应交税费——应交增值税（进项税额）%inc
+银行存款;
+%date，%self购入 %amount 吨%code，单价 %price 元，应交增值税 %inc 元。材料已送达企业并验收入库。
+%date，%self买入总价为 %sum 元的%code，所得税率为 %rate。全部款项以银行存款支付。材料已送达企业并验收入库。
+%date，%self买入一批%code，共计 %sum 元，所得税计 %inc 元，已以转账支票支付款项。材料已送达企业并验收入库。;
+material
+
+在途物资%sum——,应交税费——应交增值税（进项税额）%inc
+应付账款;
+%date，%self买入一批%code，共计 %sum 元，所得税计 %inc 元，尚未支付款项。材料已送达企业并验收入库。;
+material
+
+在途物资%sum——,应交税费——应交增值税（进项税额）%inc
+应付票据;
+%date，%self买入总价为 %sum 元的%code，所得税率为 %rate，同时对方代垫运杂费 %extra 元。%self以开出并承兑的商业汇票支付。（运杂费分配计入材料成本）;
+material
