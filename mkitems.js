@@ -1,5 +1,9 @@
 
+const meta = JSON.parse(await Deno.readTextFile('www/meta.json'));
 const output = {};
+for (const key of meta.order) {
+    output[key] = {};
+}
 
 function process(data) {
     const chunks = data.split('\n\n');
@@ -20,10 +24,9 @@ function process(data) {
     return result;
 }
 
-
 for await (const entry of Deno.readDir('items')) {
     const topic = entry.name;
-    const quiz = output[topic] = {};
+    const quiz = output[topic] = output[topic] ?? {};
     for await (const subentry of Deno.readDir('items/' + topic)) {
         const subtopic = subentry.name.slice(0, subentry.name.lastIndexOf('.'));
         const data = await Deno.readTextFile(`items/${topic}/${subentry.name}`);

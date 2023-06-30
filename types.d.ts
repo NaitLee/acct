@@ -16,5 +16,6 @@ type QuizData = {
 
 type QuizMeta = {
     self: string[],
+    order: string[],
     code: Record<string, string[]>
 };
