@@ -180,7 +180,8 @@ function getinfo(meta, topic, sub) {
     const inc = sum * rate;
     const period = ' ' + (1 + Math.random() * 11 | 0).toString() + ' ' + (hasflag(topic, 'longterm') ? '年' : '月');
     const extra = hasflag(topic, 'extra') ? 100 * (Math.random() * 20 + 1 | 0) : 0;
-    const total = sum + inc + extra;
+    const bonus = sum + extra;
+    const total = bonus + inc;
     return {
         'longterm': '',
         'date1': '',
@@ -193,11 +194,12 @@ function getinfo(meta, topic, sub) {
         'code': code,
         'amount': format(amount),
         'price': format(price),
-        'sum': format(sum + extra),
+        'sum': format(sum),
         'rate': (rate * 100).toString() + '%',
         'inc': format(inc),
-        'total': format(total),
         'extra': format(extra),
+        'bonus': format(bonus),
+        'total': format(total),
         'split1': format(split1),
         'split2': split2 === 0 ? '' : format(split2),
         'split': '',
