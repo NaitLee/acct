@@ -59,6 +59,17 @@ h3 {
 }
 h1, h2, h3 {
     text-align: center;
+    margin: 1.5em;
+}
+p {
+    margin: 12pt 0;
+}
+
+hr {
+    border: none;
+    border-top: 1pt var(--fore) dashed;
+    height: 0;
+    margin: 8pt 0;
 }
 
 main.frontpage {
@@ -73,7 +84,7 @@ a.button {
     background-color: var(--back);
     text-decoration: none;
     padding: 4pt 8pt;
-    margin: 4pt 8pt;
+    margin: 0 8pt;
     min-width: 6em;
     border: 2pt solid var(--theme);
     border-radius: 2em;
@@ -91,7 +102,7 @@ a.button:hover {
 
 main.frontpage > p > a {
     padding: 1em 2em;
-    margin: 1em;
+    margin-bottom: 1em;
     min-width: 8em;
     border-radius: 2em;
     transition: all 0.3s ease-out;
@@ -108,12 +119,12 @@ a:hover {
 table {
     width: 100%;
     white-space: nowrap;
-    margin-bottom: 16pt;
+    margin-bottom: 3em;
 }
 .to-be-filled, table td:nth-child(1) > abbr {
     /* background-color: #f0f0f0;
     color: #f0f0f0; */
-    color: var(--back);
+    color: transparent;
     transition: all 0.2s ease;
     display: inline-block;
     padding: 0 0.5em;
@@ -134,18 +145,15 @@ table td:nth-child(3) {
     text-align: right;
     text-align: end;
 }
-p {
-    margin: 8pt 0;
-}
-
-hr {
-    border: none;
-    border-top: 1pt var(--fore) dashed;
-    height: 0;
-    margin: 8pt 0;
-}
 
 @media print {
+    h1, h2, h3 {
+        text-align: center;
+        margin: 1em;
+    }
+    table {
+        margin-bottom: 1em;
+    }
     footer, .print-hide {
         display: none;
     }
