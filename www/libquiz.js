@@ -4,6 +4,15 @@
 
 // Not ideal code at all. Expecting clean-up.
 
+/** @type {Resources} */
+const resources = Promise.all([
+    fetch('meta.json').then(r => r.json()),
+    fetch('data.json').then(r => r.json())
+]).then(([meta, data]) => ({
+    meta: meta,
+    data: data
+}));
+
 /**
  * @param {string} selector 
  * @returns {HTMLElement}

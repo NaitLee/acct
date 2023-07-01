@@ -4,21 +4,18 @@
 
 const root = query('main');
 
-Promise.all([
-    fetch('meta.json').then(r => r.json()),
-    fetch('data.json').then(r => r.json())
-]).then(list);
+resources.then(list);
 
 /**
- * @param {[QuizMeta, QuizData]}
+ * @param {Resources}
  */
-function list([meta, data]) {
+function list({ meta, data }) {
     for (const set in data) {
         root.appendChild(create('hr'));
         root.appendChild(Object.assign(create('h2'), { innerText: set }));
-        for (const subset in data[set]) {
-            root.appendChild(Object.assign(create('h3'), { innerText: subset }));
-            for (const quiz of data[set][subset]) {
+        for (const subtopic in data[set]) {
+            root.appendChild(Object.assign(create('h3'), { innerText: subtopic }));
+            for (const quiz of data[set][subtopic]) {
                 const topic = select(quiz.topic);
                 const info = getinfo(meta, topic, quiz.sub);
                 const table = mkitem(quiz.from, quiz.to, info);

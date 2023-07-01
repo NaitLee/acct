@@ -79,7 +79,27 @@ main.frontpage > p {
     font-size: larger;
 }
 
-a.button {
+input, button, select {
+    font: inherit;
+    background-color: inherit;
+    color: var(--fore);
+    border: 2pt solid var(--theme);
+    border-radius: 0;
+    text-align: center;
+    margin: 8pt;
+    padding: 4pt;
+    display: inline-block;
+}
+input {
+    width: 10em;
+}
+input.right {
+    background-color: #84ff84;
+}
+input.wrong {
+    background-color: #ff8484;
+}
+a.button, button {
     display: inline-block;
     background-color: var(--back);
     text-decoration: none;
@@ -91,11 +111,11 @@ a.button {
     font-weight: bold;
     transition: all 0.3s ease-out;
 }
-a.button:any-link {
+a.button:any-link, button {
     color: var(--theme);
     border: 2pt solid var(--theme);
 }
-a.button:hover {
+a.button:hover, button:hover {
     color: var(--back);
     background-color: var(--theme);
 }
@@ -136,7 +156,8 @@ table {
 }
 .to-be-filled:hover,
 .to-be-filled.shown,
-table td:nth-child(1) > abbr:hover {
+table td:nth-child(1) > abbr:hover,
+table td:nth-child(1) > abbr.shown {
     color: var(--fore);
 }
 table td:nth-child(2),

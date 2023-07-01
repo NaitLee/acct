@@ -2,7 +2,7 @@
 type Quiz = {
     from: string | string[],
     to: string | string[],
-    title: string[],
+    topic: string[],
     sub?: string
 };
 
@@ -19,3 +19,5 @@ type QuizMeta = {
     order: string[],
     code: Record<string, string[]>
 };
+
+type Resources = { meta: QuizMeta, data: QuizData };

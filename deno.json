@@ -1,4 +1,9 @@
 {
+    "compilerOptions": {
+      "allowJs": true,
+      "lib": ["deno.window", "dom"],
+      "strict": true
+    },
     "tasks": {
         "mkitems": "deno run --allow-read --allow-write mkitems.js",
         "start-static": "cd www; python -m http.server; cd ..",
