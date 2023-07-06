@@ -1,7 +1,7 @@
 
 :root {
-    --fore: #1f2921;
-    --back: #f8fdf8;
+    --fore: #202020;
+    --back: #f8f8f8;
     --theme: #3377ff;
     --descent: #b4dcff;
 }
@@ -176,10 +176,10 @@ table td:nth-child(3) {
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --back: #191f1a;
-        --fore: #bddac0;
-        --theme: #3377ff;
-        --descent: #457aa9;
+        --back: #202020;
+        --fore: #e0e0e0;
+        --theme: #337fff;
+        --descent: #457fff;
     }
     a:any-link {
         color: #3380ff;
