@@ -1,0 +1,8 @@
+银行存款%total
+主营业务收入%sum,应交税费——应交增值税（销项税额）%inc;
+%date，%self售出 %amount 件产品，单价 %price 元，增值税率为 %rate。
+
+应收账款%total——
+主营业务收入%sum,应交税费——应交增值税（销项税额）%inc,银行存款%extra;
+%date，%self向%other销售一批产品，共计 %sum 元，应交增值税 %inc，并代垫运杂费 %extra 元。;
+others

@@ -1,4 +1,4 @@
 库存商品——
 生产成本——;
-%date，%self本期投产的 2 种产品全部完工，并验收入库。其中，%code1总计 %split1 元，%code2 总计 %split2 元。%split;
+%date，%self本期投产的 2 种产品全部完工，并验收入库。其中，%code1总计 %split1 元，%code2总计 %split2 元。%split;
 product

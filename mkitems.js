@@ -1,41 +1,47 @@
 
-const meta = JSON.parse(await Deno.readTextFile('www/meta.json'));
-const output = {};
-for (const key of meta.order) {
-    output[key] = {};
-}
+export function mkitems() {
 
-function process(data) {
-    const chunks = data.split('\n\n');
+    const meta = JSON.parse(Deno.readTextFileSync('www/meta.json'));
 
-    const result = [];
-
-    for (const chunk of chunks) {
-        const [f_t, topics, sub] = chunk.split(';\n').map(x => x.trim());
-        const [froms, tos] = f_t.split('\n');
-        result.push({
-            from: froms.split(','),
-            to: tos.split(','),
-            topic: topics.split('\n'),
-            sub: sub || ''
-        });
+    /** @type {QuizData} */
+    const output = {};
+    for (const key of meta.order) {
+        output[key] = {};
     }
 
-    return result;
-}
+    function process(data) {
+        const chunks = data.split('\n\n');
 
-for await (const entry of Deno.readDir('items')) {
-    const topic = entry.name;
-    const quiz = output[topic] = output[topic] ?? {};
-    for await (const subentry of Deno.readDir('items/' + topic)) {
-        const subtopic = subentry.name.slice(0, subentry.name.lastIndexOf('.'));
-        const data = await Deno.readTextFile(`items/${topic}/${subentry.name}`);
-        if (data.trim() === '') continue;
-        quiz[subtopic] = process(data);
+        const result = [];
+
+        for (const chunk of chunks) {
+            const [f_t, topics, sub] = chunk.split(';\n').map(x => x.trim());
+            const [froms, tos] = f_t.split('\n');
+            result.push({
+                from: froms.split(','),
+                to: tos.split(','),
+                topic: topics.split('\n'),
+                sub: sub || ''
+            });
+        }
+
+        return result;
     }
-}
 
-export const ITEMS = output;
+    for (const entry of Deno.readDirSync('items')) {
+        const topic = entry.name;
+        const quiz = output[topic] = output[topic] ?? {};
+        for (const subentry of Deno.readDirSync('items/' + topic)) {
+            const subtopic = subentry.name.slice(0, subentry.name.lastIndexOf('.'));
+            const data = Deno.readTextFileSync(`items/${topic}/${subentry.name}`);
+            if (data.trim() === '') continue;
+            quiz[subtopic] = process(data);
+        }
+    }
+
+    return output;
+
+}
 
 if (import.meta.main)
-    await Deno.writeTextFile('data.json', JSON.stringify(output, void 0, 4));
+    await Deno.writeTextFile('data.json', JSON.stringify(mkitems(), void 0, 4));

@@ -1,0 +1,17 @@
+销售费用
+银行存款;
+%date，%self出资 %sum 元为所销售产品做广告。
+
+销售费用
+累计折旧;
+%date，%self计提本期销售机构所使用固定资产的折旧费 %sum 元。
+
+销售费用
+应付职工薪酬;
+经计算，%date，%self应付给销售人员工资 %sum 元。
+
+主营业务成本
+库存商品——;
+经计算，%date，%self本期销售%code %amount 件，单位成本 %price 元。
+经计算，%date，%self本期销售的%code1成本共计 %split1 元，%code2成本共计 %split2 元。%split;
+product
