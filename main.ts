@@ -12,7 +12,7 @@ function getdata() {
     console.log(`data.json dynamically generated and have ${Object.keys(data).length} keys`);
     if (config.omit_date_self)
         //FIXME: bad trick
-        datastr = datastr.replace(/(%date)?(，)?(%self)/g, '公司');
+        datastr = datastr.replace(/(%date，)?(%self)/g, '公司');
     return datastr;
 }
 

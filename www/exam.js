@@ -16,7 +16,23 @@ resources.then(start);
  * @param {Resources} param0 
  */
 function start({ meta, data }) {
+    const selections = query('#selections');
     const topics = Object.keys(data);
+    for (const key in data) {
+        const label = create('label');
+        const check = create('input');
+        check.type = 'checkbox';
+        check.checked = true;
+        check.addEventListener('change', () => {
+            check.checked
+                ? topics.push(key)
+                : topics.splice(topics.indexOf(key), 1);
+            putquiz();
+        });
+        label.appendChild(check);
+        label.appendChild(Object.assign(create('span'), { innerText: key }));
+        selections.appendChild(label);
+    }
     const subs = {};
     // FIXME: badly made variable scope
     let challenge;
@@ -32,8 +48,10 @@ function start({ meta, data }) {
         const title = select(quiz.topic);
         const info = getinfo(meta, title, quiz.sub);
         const table = mkitem(quiz.from, quiz.to, info);
+        quizfield.appendChild(create('hr'));
         quizfield.appendChild(Object.assign(create('p'), { innerText: hold(title, info) }));
         quizfield.appendChild(table);
+        quizfield.appendChild(create('hr'));
         challenge = '考点：' + topic + ' · ' + subtopic;
         answerfield.innerHTML = '';
         let index = 1;
@@ -41,6 +59,7 @@ function start({ meta, data }) {
             const answer = label.split('——')[0].replace(/%[^ ]+/g, '');
             const input = create('input');
             input.name = index++;
+            input.type = 'text';
             input.setAttribute('data-answer', answer);
             answerfield.appendChild(input);
         }

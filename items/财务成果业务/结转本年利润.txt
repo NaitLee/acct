@@ -1,0 +1,17 @@
+主营业务收入%split1,营业外收入%split2
+本年利润;
+%date，%self计算本期损益，将主营业务收入 %split1 元、营业外收入 %split2 元转入本年利润。%split%month12
+%date，%self计算本期损益。据统计，本期主营业务收入共计 %split1 元、营业外收入共计 %split2 元。%split%month12
+
+本年利润%total
+主营业务成本%split1,税金及附加%inc,销售费用%extra,管理费用%extra,财务费用%extra,营业外收入%split2;
+%date，%self计算本期损益，将本期发生的主营业务成本 %split1 元、税金及附加 %inc 元、销售费用 %extra 元、管理费用 %extra 元、财务费用 %extra 元和营业外支出 %split2 元转入本年利润。%split%month12
+%date，%self计算本期损益。据统计，本期发生的主营业务成本总计 %split1 元，税金及附加总计 %inc 元，销售费用总计 %extra 元，管理费用总计 %extra 元，财务费用总计 %extra 元，营业外支出总计 %split2 元。%split%month12
+
+所得税费用
+应交税费——应交所得税;
+%date，%self按 25% 的税率计算本期应缴纳的所得税费用 %sum 元。%month12
+
+本年利润
+所得税费用;
+%date，%self将本期应计入损益的所得税费用 %sum 元转入本年利润账户。%month12

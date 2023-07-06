@@ -1,7 +1,7 @@
 
 :root {
-    --fore: #1f2129;
-    --back: #f8fdfd;
+    --fore: #1f2921;
+    --back: #f8fdf8;
     --theme: #3377ff;
     --descent: #b4dcff;
 }
@@ -72,6 +72,11 @@ hr {
     margin: 8pt 0;
 }
 
+label {
+    display: inline-block;
+    margin: 4pt 8pt;
+}
+
 main.frontpage {
     text-align: center;
 }
@@ -90,7 +95,9 @@ input, button, select {
     padding: 4pt;
     display: inline-block;
 }
-input {
+input[type="text"],
+input[type="number"],
+select {
     width: 10em;
 }
 input.right {
@@ -167,10 +174,29 @@ table td:nth-child(3) {
     text-align: end;
 }
 
+@media (prefers-color-scheme: dark) {
+    :root {
+        --back: #191f1a;
+        --fore: #bddac0;
+        --theme: #3377ff;
+        --descent: #457aa9;
+    }
+    a:any-link {
+        color: #3380ff;
+    }
+    a:hover {
+        color: #1870ff;
+    }
+}
+
 @media print {
+    body {
+        font-size: 12pt;
+    }
     h1, h2, h3 {
         text-align: center;
-        margin: 1em;
+        margin: 16pt 0;
+        font-size: 16pt;
     }
     table {
         margin-bottom: 1em;

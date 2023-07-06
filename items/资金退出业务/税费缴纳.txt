@@ -1,0 +1,3 @@
+应交税费——应交所得税%inc
+银行存款%inc;
+%date，%self用银行存款缴纳本期所得税 %inc 元。%month12%rate25

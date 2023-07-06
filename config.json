@@ -1,5 +1,5 @@
 {
     "host": "0.0.0.0",
     "port": 8000,
-    "omit_date_self": true
+    "omit_date_self": false
 }

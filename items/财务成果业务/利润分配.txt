@@ -1,0 +1,15 @@
+本年利润
+利润分配;
+%date，%self将本年利润结转，以便利润分配。%month12
+
+利润分配%inc
+盈余公积%inc;
+%date，%self实现本年利润 %sum。按照税后利润的 %rate 提取盈余公积。%rate10%month12
+
+利润分配
+应付股利;
+%date，%self决定向投资者分配利润 %sum 元。%month12
+
+盈余公积
+实收资本;
+%date，%self决定用 %sum 元的盈余公积转增资本。%month12

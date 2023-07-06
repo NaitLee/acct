@@ -1,0 +1,4 @@
+其他应收款%extra——
+库存现金%extra;
+%date，%self用现金为%code报销差旅费 %extra 元。;
+staff

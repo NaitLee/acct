@@ -97,9 +97,9 @@ function mkitem(from, to, info) {
             const flag = getflag(i);
             const name = i.replace('%' + flag, '');
             if (info.code && i.endsWith('——')) {
-                add(name + info.code1, info.split1);
+                add(name + info.code1, info.bonus1);
                 if (info.split2 !== '')
-                    add('——' + info.code2, info.split2, name.length - 2 + 1 /* css padding */);
+                    add('——' + info.code2, info.bonus2, name.length - 2 + 1 /* css padding */);
             } else
                 add(name, info[flag]);
         }
@@ -114,14 +114,6 @@ function mkitem(from, to, info) {
  */
 function select(array) {
     return array[Math.random() * array.length | 0];
-}
-/**
- * @param {string} string 
- * @param {string} flag 
- * @returns {boolean}
- */
-function hasflag(string, flag) {
-    return string.includes('%' + flag);
 }
 
 if (!('replaceAll' in String))
@@ -158,42 +150,65 @@ const today = new Date();
 /**
  * 
  * @param {QuizMeta} meta 
- * @param {QuizData} topic 
+ * @param {string} topic 
  * @param {string} sub 
  * @returns 
  */
 function getinfo(meta, topic, sub) {
+    /**
+     * @param {string} string 
+     * @param {string} flag 
+     * @returns {boolean}
+     */
+    function hasflag(flag) {
+        return topic.includes('%' + flag);
+    }
     const self = select(meta.self);
     const code = sub ? select(meta.code[sub]) : '';
     const code1 = code;
     const code2 = code1 ? select(meta.code[sub].filter(x => x !== code)) : '';
     const y = today.getFullYear();
-    const m = today.getMonth() + 1;
+    const m = hasflag('month12') ? 12 : today.getMonth() + 1;
     /*
-    const d = hasflag(topic, 'date1')
+    const d = hasflag('date1')
         ? 1
-        : hasflag(topic, 'date15')
+        : hasflag('date15')
             ? (Math.random() * maxdate(y, m) | 0 + 1)
             : maxdate(y, m);
     */
     const d = maxdate(y, m);
     const date = ` ${y} 年 ${m} 月 ${d} 日`;
     const other = sub === 'others' ? code : select(meta.code['others']);
+
+    const split = hasflag('split') ? (2 + (Math.random() * 6 | 0)) / 10 : 1;
     const amount = 10 * (Math.random() * 5 + 1 | 0);
+    const amount1 = amount * split | 0;
+    const amount2 = amount - amount1;
     const price = 100 * (Math.random() * 100 + 1 | 0);
     const sum = amount * price;
-    const split = hasflag(topic, 'split') ? (2 + (Math.random() * 6 | 0)) / 10 : 1;
     const split1 = sum * split | 0;
     const split2 = sum - split1;
-    const rate = hasflag(topic, 'rate') || hasflag(topic, 'inc') ? 0.13 : 0;
+    let rate = hasflag('rate') || hasflag('rate13') || hasflag('inc') ? 0.13 : 0;
+    if (hasflag('rate10')) rate = 0.1;
+    else if (hasflag('rate5')) rate = 0.05;
+    else if (hasflag('rate25')) rate = 0.25;
     const inc = sum * rate;
-    const period = ' ' + (1 + Math.random() * 11 | 0).toString() + ' ' + (hasflag(topic, 'longterm') ? '年' : '月');
-    const extra = hasflag(topic, 'extra') ? 100 * (Math.random() * 20 + 1 | 0) : 0;
-    const bonus = sum + extra;
+    const period = ' ' + (2 + Math.random() * 10 | 0).toString() + ' ' + (hasflag('longterm') ? '年' : '个月');
+    //FIXME: various extras?
+    const extra = 100 * (Math.random() * 50 + 1 | 0);
+    const extra_count = topic.match(/%extra/g)?.length ?? 0;
+    const bonus = sum + extra * extra_count;
+    const bonus1 = bonus * split | 0;
+    const bonus2 = bonus - bonus1;
     const total = bonus + inc;
     return {
         'longterm': '',
         'date1': '',
+        'month12': '',
+        'rate5': '',
+        'rate10': '',
+        'rate13': '',
+        'rate25': '',
 
         'date': date,
         'self': self,
@@ -201,6 +216,8 @@ function getinfo(meta, topic, sub) {
         'code1': code1,
         'code2': code2,
         'code': code,
+        'amount1': format(amount1),
+        'amount2': format(amount2),
         'amount': format(amount),
         'price': format(price),
         'sum': format(sum),
@@ -211,8 +228,11 @@ function getinfo(meta, topic, sub) {
         'total': format(total),
         'split1': format(split1),
         'split2': split2 === 0 ? '' : format(split2),
-        'split': '',
+        'bonus1': format(bonus1),
+        'bonus2': bonus2 === 0 ? '' : format(bonus2),
         'period': period,
+
+        'split': '',
     };
 }
 
