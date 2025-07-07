@@ -2,12 +2,12 @@
 
 会计分录编制模拟。有助于*在期末考试前*练习、理解部分会计学基础理论知识。
 
-代码~~较~~很粗糙。
+Host moved to: https://junk.unseen-site.fun/acct/
 
-简介请待后续工作。
+Source code moved to [here](https://git.yozora.tech/maki/junk/src/branch/main/acct).
 
-## 许可
+## License
 
-版权所有 © 2023 NaitLee。保留一些权利。
+Relicensed in [WTFPL, version 2](https://git.yozora.tech/maki/junk/src/branch/main/LICENSE).
 
-脚本与资料均以 [FreeBSD 许可证](./LICENSE)发布。
+The BSD license in this archived repository should be considered historical.
